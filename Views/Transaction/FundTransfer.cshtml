@@ -1,0 +1,355 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link href="~/assets/css/sweetalert.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<!-- [ Main Content ] start -->
+<div class="row">
+    <form action="@Url.Action("FundTransfer")" method="post" onsubmit="return validateForm()">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Fund Transfer</h3>
+                </div>
+                <div class="card-body">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        if (error.ErrorMessage == "Fund Transfer Save Successfully")
+                        {
+                            <div class="alert alert-success">@error.ErrorMessage</div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger">@error.ErrorMessage</div>
+                        }
+
+                    }
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Transfer From</h3>
+                                </div>
+                                <div class="card-body">
+                                    
+                                    <input type="text" value="" id="accountId" name="accountId" hidden />
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account No</label>
+                                                <input type="text" id="accountNo" name="accountNo" class="form-control" value="" placeholder="Enter Account No" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Customer</label>
+                                                <select class="form-select me-2" id="customerId" name="customerId" disabled>
+                                                    <option value="0">Select Customer</option>
+                                                    @foreach (var customer in ViewBag.CustomerList)
+                                                    {
+                                                        <option value="@customer.CustomerId">@customer.Username</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" id="firstName" class="form-control" placeholder="Enter first name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Last Name</label>
+                                                <input type="text" id="lastName" class="form-control" placeholder="Enter last name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" id="email" class="form-control" placeholder="Enter email" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Mobile Number</label>
+                                                <input type="number" id="phoneNumber" class="form-control" placeholder="Enter Mobile number" readonly />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account Type</label>
+                                                <input type="text" id="TransactionType" name="transactionType" class="form-control" placeholder="Enter AccountType" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Current Balance</label>
+                                                <input type="number" min="0" value="0" step="0.01" id="currentBalance" name="balance" class="form-control" placeholder="Enter Current Balance" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Transfer Date</label>
+                                                <input type="datetime-local" id="TransactionDate" name="TransactionDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" placeholder="Enter Transaction date" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Transfer Amount</label>
+                                                <input type="number" min="500" value="500" step="0.01" id="transferBalance" name="Amount" class="form-control" placeholder="Enter amount" />
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Transfer To</h3>
+                                </div>
+                                <div class="card-body">
+                                    
+                                    <input type="text" value="" id="transferToAccountId" name="transferToAccountId" hidden />
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account No</label>
+                                                <input type="text" id="transferToAccountNo" name="transferToAccountNo" class="form-control" value="" placeholder="Enter Account No" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Customer</label>
+                                                <select class="form-select me-2" id="transferToCustomerId" name="transferToCustomerId" disabled>
+                                                    <option value="0">Select Customer</option>
+                                                    @foreach (var customer in ViewBag.CustomerList)
+                                                    {
+                                                        <option value="@customer.CustomerId">@customer.Username</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" id="transferToFirstName" class="form-control" placeholder="Enter first name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Last Name</label>
+                                                <input type="text" id="transferToLastName" class="form-control" placeholder="Enter last name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" id="transferToEmail" class="form-control" placeholder="Enter email" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Mobile Number</label>
+                                                <input type="number" id="transferToPhoneNumber" class="form-control" placeholder="Enter Mobile number" readonly />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account Type</label>
+                                                <input type="text" id="transferToTransactionType" name="transferTotransactionType" class="form-control" placeholder="Enter AccountType" readonly />
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-end">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    document.getElementById("accountNo").addEventListener("blur", accountInfo);
+    document.getElementById("transferToAccountNo").addEventListener("blur", transferToAccountInfo);
+    function accountInfo() {
+        const transferFromAccountNo = document.getElementById("accountNo").value;
+        const transferToAccountNo = document.getElementById("transferToAccountNo").value;
+
+        if (transferFromAccountNo == transferToAccountNo) {
+            document.getElementById("accountNo").value = '';
+            document.getElementById("transferToAccountNo").value = '';
+            clear();
+            Swal.fire("Error", "Same Account No Can not Fund Transfer!", "error");
+            return;
+        }
+        var json = {
+            accountNo: document.getElementById("accountNo").value
+        };
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetAccountInfo", "Accounts")',
+            dataType: "json",
+            data: json,
+            success: function (data) {
+                if (data.success) {
+                    document.getElementById("accountId").value = data.accountId;
+                    document.getElementById("customerId").value = data.customerId;
+                    document.getElementById("firstName").value = data.firstName;
+                    document.getElementById("lastName").value = data.lastName;
+                    document.getElementById("email").value = data.email;
+                    document.getElementById("phoneNumber").value = data.phone;
+                    document.getElementById("TransactionType").value = data.accountType;
+                    document.getElementById("currentBalance").value = data.currentBalance;
+                }
+                else {
+                    document.getElementById("accountId").value = '';
+                    document.getElementById("customerId").value = '0';
+                    document.getElementById("firstName").value = '';
+                    document.getElementById("lastName").value = '';
+                    document.getElementById("email").value = '';
+                    document.getElementById("phoneNumber").value = '';
+                    document.getElementById("TransactionType").value = '';
+                    document.getElementById("currentBalance").value = '';
+                }
+
+            },
+            error: function () {
+                console.log("Error fetching data.");
+            }
+        });
+    }
+    
+    function transferToAccountInfo() {
+        const transferFromAccountNo=document.getElementById("accountNo").value;
+        const transferToAccountNo = document.getElementById("transferToAccountNo").value;
+        
+        if (transferFromAccountNo == transferToAccountNo){
+            document.getElementById("accountNo").value = '';
+            document.getElementById("transferToAccountNo").value = '';
+            clear();
+            Swal.fire("Error", "Same Account No Can not Fund Transfer!", "error");
+            return;
+        }
+        var json = {
+            accountNo: document.getElementById("transferToAccountNo").value
+        };
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetAccountInfo", "Accounts")',
+            dataType: "json",
+            data: json,
+            success: function (data) {
+                if (data.success) {
+                    document.getElementById("transferToAccountId").value = data.accountId;
+                    document.getElementById("transferToCustomerId").value = data.customerId;
+                    document.getElementById("transferToFirstName").value = data.firstName;
+                    document.getElementById("transferToLastName").value = data.lastName;
+                    document.getElementById("transferToEmail").value = data.email;
+                    document.getElementById("transferToPhoneNumber").value = data.phone;
+                    document.getElementById("transferToTransactionType").value = data.accountType;
+                }
+                else {
+                    document.getElementById("transferToAccountId").value = '';
+                    document.getElementById("transferToCustomerId").value = '0';
+                    document.getElementById("transferToFirstName").value = '';
+                    document.getElementById("transferToLastName").value = '';
+                    document.getElementById("transferToEmail").value = '';
+                    document.getElementById("transferToPhoneNumber").value = '';
+                    document.getElementById("transferToTransactionType").value = '';
+                }
+
+            },
+            error: function () {
+                console.log("Error fetching data.");
+            }
+        });
+    }
+
+    function clear(){
+        document.getElementById("accountId").value = '';
+        document.getElementById("customerId").value = '0';
+        document.getElementById("firstName").value = '';
+        document.getElementById("lastName").value = '';
+        document.getElementById("email").value = '';
+        document.getElementById("phoneNumber").value = '';
+        document.getElementById("TransactionType").value = '';
+        document.getElementById("currentBalance").value = '';
+        document.getElementById("transferToAccountId").value = '';
+        document.getElementById("transferToCustomerId").value = '0';
+        document.getElementById("transferToFirstName").value = '';
+        document.getElementById("transferToLastName").value = '';
+        document.getElementById("transferToEmail").value = '';
+        document.getElementById("transferToPhoneNumber").value = '';
+        document.getElementById("transferToTransactionType").value = '';
+    }
+    function validateForm() {
+
+        
+        var isValid = true;
+
+
+        const transferBalance = parseFloat($("#transferBalance").val());
+        const currentBalance = parseFloat($("#currentBalance").val());
+        
+
+        // Check if all required fields are filled
+        if ($("#accountNo").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Transfer From Account No is required!", "error");
+            return isValid;
+        }
+        else if (parseFloat($("#transferBalance").val()) > parseFloat($("currentBalance").val())) {
+            isValid = false;
+            Swal.fire("Error", "Insufficient Balance", "error");
+            return isValid;
+        }
+        else if ($("#transferToAccountNo").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Transfer TO Account No is required!", "error");
+            return isValid;
+        }
+        else if ($("#customerId").val() === "0") {
+            isValid = false;
+            Swal.fire("Error", "Customer is required!", "error");
+            return isValid;
+        } else if ($("#transferBalance").val() < 500) {
+            isValid = false;
+            Swal.fire("Error", "Transfer Balance must be greater than 500!", "error");
+            return isValid;
+        }
+        else if (isNaN(transferBalance) || isNaN(currentBalance)) {
+            Swal.fire("Error", "Please enter valid numbers", "error");
+            isValid = false;
+            return isValid;
+        } else if (transferBalance > currentBalance) {
+            isValid = false;
+            Swal.fire("Error", "Insufficient Balance", "error");
+            return isValid;
+        }
+
+        return isValid;
+    }
+</script>

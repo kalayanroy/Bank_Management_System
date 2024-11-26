@@ -1,0 +1,193 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Loan";
+}
+@model IEnumerable<Loan>
+<style>
+    .custom-swal-size {
+        width: 400px; /* Adjust the width as needed */
+        height: 150px;
+        font-size: 12px; /* Adjust the font size as needed */
+        /* Add any other styling you want */
+    }
+</style>
+<!-- [ Main Content ] start -->
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between">
+                    <h3 class="mb-3 mb-sm-0">Loan list</h3>
+                    <div>
+                        <a href="@Url.Action("LoanApply")" class="btn btn-primary">Loan Apply</a>
+                        <a href="@Url.Action("LoanCollection")" class="btn btn-primary">Loan Collection</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-between ali mb-3 g-3">
+                    <div class="col-sm-auto">
+                        <form class="form-search">
+                            <i class="ph-duotone ph-magnifying-glass icon-search"></i>
+                            <input type="search" class="form-control" placeholder="Search..." />
+                            <button class="btn btn-light-secondary btn-search">Search</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Account No</th>
+                                <th>Loan Type</th>
+                                <th>Interest Rate(%)</th>
+                                <th>Term</th>
+                                <th>Loan Amount</th>
+                                <th>Loan Paid Amount</th>
+                                <th>Loan A.Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int sl = 1;
+                            }
+                            @foreach(var item in Model)
+                            {
+                                <tr>
+                                    <td>@sl</td>
+                                    <td>@item.AccountNo</td>
+                                    <td>@item.LoanType</td>
+                                    <td>@item.InterestRate</td>
+                                    <td>@item.Term</td>
+                                    <td>@item.LoanAmount</td>
+                                    <td></td>
+                                    <td>
+                                        @if (item.LoanStatus == "Pending")
+                                        {
+                                            <select class="form-select me-2" id="loadStatus" name="loadStatus" onchange="loanStatus(this.value,'@item.LoanId')">
+                                                <option value="Pending" selected>Pending</option>
+                                                <option value="Approved">Approved</option>
+                                                <option value="Rejected">Rejected</option>
+                                            </select>
+                                        }
+                                        else if (item.LoanStatus == "Approved")
+                                        {
+                                            <select class="form-select me-2" id="loadStatus" name="loadStatus" onchange="loanStatus(this.value,'@item.LoanId')">
+                                                <option value="Approved" selected>Approved</option>
+                                                @* <option value="Rejected">Rejected</option> *@
+                                            </select>
+                                        }
+                                        else if (item.LoanStatus == "Rejected")
+                                        {
+                                            <select class="form-select me-2" id="loadStatus" name="loadStatus" onchange="loanStatus(this.value,'@item.LoanId')">
+                                                @* <option value="Approved">Approved</option> *@
+                                                <option value="Rejected" selected>Rejected</option>
+                                            </select>
+                                        }
+                                    </td>
+                                </tr>
+                                sl++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ sample-page ] end -->
+
+</div>
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
+<script>
+    function isDelete(masterId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var json = {
+                    id: masterId
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Delete")',
+                    dataType: "json",
+                    data: json,
+                    success: function (data) {
+
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            customClass: {
+                                popup: 'custom-swal-size' // Add your custom CSS class here
+                            }
+                        }).then(function () {
+                            window.location = window.location.origin + '/Loan/Index';
+                        });
+                    },
+                    error: function () {
+                        console.log("Error fetching data.");
+                    }
+                });
+
+            }
+        });
+    }
+
+    function loanStatus(status, masterId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, ' + status + ' it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var json = {
+                    masterId: masterId,
+                    status: status
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("UpdateStatus")',
+                    dataType: "json",
+                    data: json,
+                    success: function (data) {
+
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            customClass: {
+                                popup: 'custom-swal-size' // Add your custom CSS class here
+                            }
+                        }).then(function () {
+                            window.location = window.location.origin + '/Loan/Index';
+                        });
+                    },
+                    error: function () {
+                        console.log("Error fetching data.");
+                    }
+                });
+
+            }
+        });
+    }
+</script>

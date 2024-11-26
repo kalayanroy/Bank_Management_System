@@ -1,0 +1,182 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Account
+<link href="~/assets/css/sweetalert.css" rel="stylesheet" />
+<!-- [ Main Content ] start -->
+<div class="row">
+    <form action="@Url.Action("Edit")" method="post" id="createAccountForm" onsubmit="return validateForm()">
+        <div class="col-12">
+            <div class="card">
+                <input type="text" value="@Model.AccountId" id="accountId" name="accountId" hidden />
+                <div class="card-header">
+                    <h3 class="mb-0">Edit Account No(@Model.AccountNo)</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Account No</label>
+                                <input type="text" id="accountNo" name="accountNo" class="form-control" value="@Model.AccountNo" placeholder="Enter Account No" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input value="@Model.CustomerId" id="editCustomerId" hidden/>
+                            <div class="mb-3">
+                                <label class="form-label">Customer</label>
+                                <select class="form-select" id="customerId" name="customerId" onchange="customerInfo(this.value)">
+                                    <option value="0">select Customer</option>
+                                    @foreach (var customer in ViewBag.CustomerList)
+                                    {
+                                        <option value="@customer.CustomerId">@customer.Username</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text" id="firstName" class="form-control" placeholder="Enter first name" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" id="lastName" class="form-control" placeholder="Enter last name" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="Enter email" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="number" id="phoneNumber" class="form-control" placeholder="Enter Mobile number" readonly />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input value="@Model.AccountType" id="editAccountType" hidden />
+                            <div class="mb-3">
+                                <label class="form-label">Account Type</label>
+                                <select id="acccountType" name="accountType" class="form-select">
+                                    <option value="Checking">Checking</option>
+                                    <option value="Savings">Savings</option>
+                                    <option value="Loan">Loan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Opening Balance</label>
+                                <input type="number" min="0" value="@Model.Balance" step="0.01" id="openingBalance" name="balance" class="form-control" placeholder="Enter Opening Balance" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input value="@Model.Currency" id="editCurrencty" hidden />
+                            <div class="mb-3">
+                                <label class="form-label">Currency</label>
+                                <select class="form-select" id="currency" name="currency">
+                                    <option value="BDT">BDT</option>
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="INR">INR</option>
+                                    <option value="JPY">JPY</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-end">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<!-- [ Main Content ] end -->
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
+<script>
+    Load();
+    function Load(){
+        document.getElementById("currency").value = document.getElementById("editCurrencty").value;
+        document.getElementById("acccountType").value = document.getElementById("editAccountType").value;
+        document.getElementById("customerId").value = document.getElementById("editCustomerId").value;
+
+        customerInfo(document.getElementById("editCustomerId").value);
+    }
+    function customerInfo(value) {
+        var json = {
+            customerId: value
+        };
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetCustomerInfo")',
+            dataType: "json",
+            data: json,
+            success: function (data) {
+                if (data.success) {
+                    document.getElementById("firstName").value = data.firstName;
+                    document.getElementById("lastName").value = data.lastName;
+                    document.getElementById("email").value = data.email;
+                    document.getElementById("phoneNumber").value = data.phone;
+                }
+
+            },
+            error: function () {
+                console.log("Error fetching data.");
+                callback(0, '');
+            }
+        });
+
+
+    }
+    function validateForm() {
+
+
+        var isValid = true;
+
+        // Check if all required fields are filled
+        if ($("#accountNO").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Account No is required!", "error");
+        } else if ($("#openingBalance").val() < 0) {
+            isValid = false;
+            Swal.fire("Error", "Opening Balance must be greater than 0!", "error");
+        }
+        return isValid;
+    }
+    // Form validation before submission
+    // $("#createAccountForm").submit(function (event) {
+    //     event.preventDefault(); // Prevent form submission
+
+    //     var isValid = true;
+
+    //     // Check if all required fields are filled
+    //     if ($("#accountNO").val() === "") {
+    //         isValid = false;
+    //         Swal.fire("Error", "Account No is required!", "error");
+    //     } else if ($("#openingBalance").val() <= 0) {
+    //         isValid = false;
+    //         Swal.fire("Error", "Opening Balance must be greater than 0!", "error");
+    //     }
+
+    //     // If form is valid, submit the form (example here, you may need to submit via AJAX)
+    //     if (isValid) {
+    //         // Use SweetAlert for success message before submitting
+    //         Swal.fire("Success", "Form Submitted Successfully!", "success").then(function () {
+    //             // Submit the form if needed, for example:
+    //             //this.submit();
+    //             //alert('Form would be submitted here!');
+    //         });
+    //     }
+    // });
+</script>

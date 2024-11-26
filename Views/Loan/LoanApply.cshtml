@@ -1,0 +1,245 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link href="~/assets/css/sweetalert.css" rel="stylesheet" />
+<!-- [ Main Content ] start -->
+<div class="row">
+    <form action="@Url.Action("LoanApply")" method="post" onsubmit="return validateForm()">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Loan Apply</h3>
+                </div>
+                <div class="card-body">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        if (error.ErrorMessage == "Deposit Save Successfully")
+                        {
+                            <div class="alert alert-success">@error.ErrorMessage</div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger">@error.ErrorMessage</div>
+                        }
+                        
+                    }
+                    <input type="text" value="" id="accountId" name="accountId" hidden />
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account No</label>
+                                                <input type="text" id="accountNo" name="accountNo" class="form-control" value="" placeholder="Enter Account No" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Customer</label>
+                                                <select class="form-select me-2" id="customerId" name="customerId" disabled>
+                                                    <option value="0">Select Customer</option>
+                                                    @foreach (var customer in ViewBag.CustomerList)
+                                                    {
+                                                        <option value="@customer.CustomerId">@customer.Username</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" id="firstName" class="form-control" placeholder="Enter first name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Last Name</label>
+                                                <input type="text" id="lastName" class="form-control" placeholder="Enter last name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" id="email" class="form-control" placeholder="Enter email" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Mobile Number</label>
+                                                <input type="number" id="phoneNumber" class="form-control" placeholder="Enter Mobile number" readonly />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account Type</label>
+                                                <input type="text" id="TransactionType" name="transactionType" class="form-control" placeholder="Enter AccountType" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Current Balance</label>
+                                                <input type="number" min="0" value="0" step="0.01" id="currentBalance" name="balance" class="form-control" placeholder="Enter Current Balance" disabled />
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Loan Type</label>
+                                                <select class="form-select me-2" id="loanType" name="loanType">
+                                                    <option value="0">Select Type</option>
+                                                    <option value="Home">Home</option>
+                                                    <option value="Car">Car</option>
+                                                    <option value="Personal">Personal</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Term(Months)</label>
+                                                <input type="number" min="0" value="0" step="0.01" id="term" name="term" class="form-control" placeholder="Enter Term(Months)" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Loan Amount</label>
+                                                <input type="number" min="100000" value="100000" step="0.01" id="loanAmount" name="loanAmount" class="form-control" placeholder="Enter Loan Amount" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Interest Rate (%)</label>
+                                                <input type="number" min="0" value="0" step="0.01" id="interestRate" name="interestRate" class="form-control" placeholder="Enter Interest Rate" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Monthly Installment</label>
+                                                <input type="text" id="monthlyInstallment" class="form-control" placeholder="Enter Monthly Installment" style="color:red;font-weight:bold" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Remarks</label>
+                                                <textarea rows="2" cols="2"name="remarks" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-end">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    document.getElementById("accountNo").addEventListener("blur", accountInfo);
+    document.getElementById("term").addEventListener("blur", monthlyInstallment);
+    document.getElementById("loanAmount").addEventListener("blur", monthlyInstallment);
+    document.getElementById("interestRate").addEventListener("blur", monthlyInstallment);
+    function accountInfo(){
+        var json = {
+            accountNo: document.getElementById("accountNo").value
+        };
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetAccountInfo", "Accounts")',
+            dataType: "json",
+            data: json,
+            success: function (data) {
+                if (data.success) {
+                    document.getElementById("accountId").value = data.accountId;
+                    document.getElementById("customerId").value = data.customerId;
+                    document.getElementById("firstName").value = data.firstName;
+                    document.getElementById("lastName").value = data.lastName;
+                    document.getElementById("email").value = data.email;
+                    document.getElementById("phoneNumber").value = data.phone;
+                    document.getElementById("TransactionType").value = data.accountType;
+                    document.getElementById("currentBalance").value = data.currentBalance;
+                }
+                else {
+                    document.getElementById("accountId").value = '';
+                    document.getElementById("customerId").value = '0';
+                    document.getElementById("firstName").value = '';
+                    document.getElementById("lastName").value = '';
+                    document.getElementById("email").value = '';
+                    document.getElementById("phoneNumber").value = '';
+                    document.getElementById("TransactionType").value = '';
+                    document.getElementById("currentBalance").value = '';
+                }
+
+            },
+            error: function () {
+                console.log("Error fetching data.");
+            }
+        });
+    }
+
+    function validateForm() {
+
+
+        var isValid = true;
+
+        // Check if all required fields are filled
+        if ($("#accountNo").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Account No is required!", "error");
+        }
+        else if ($("#loanType").val() === "0") {
+            isValid = false;
+            Swal.fire("Error", "Loan Type is required!", "error");
+        }
+        else if ($("#customerId").val() === "0") {
+            isValid = false;
+            Swal.fire("Error", "Customer is required!", "error");
+        } else if ($("#loanAmount").val() < 100000) {
+            isValid = false;
+            Swal.fire("Error", "Loan must be greater than 100000!", "error");
+        } else if ($("#term").val() < 1) {
+            isValid = false;
+            Swal.fire("Error", "Term(Months) be greater than 1!", "error");
+        }
+        return isValid;
+    }
+
+    function monthlyInstallment(){
+        //term
+        //loanAmount //interestRate //monthlyInstallment
+        var termM=document.getElementById("term").value;
+        var loanA = document.getElementById("loanAmount").value;
+        var interestR = document.getElementById("interestRate").value;
+
+        const monthlyInstallmentAmount = (parseFloat(loanA) * (1 + parseFloat(interestR) / 100)) / parseFloat(termM);
+
+        document.getElementById("monthlyInstallment").value = parseFloat(monthlyInstallmentAmount).toFixed(2);
+
+    }
+</script>

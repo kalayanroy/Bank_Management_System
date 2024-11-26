@@ -1,0 +1,73 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<TransactionHistory>
+<style>
+    .custom-swal-size {
+        width: 400px; /* Adjust the width as needed */
+        height: 150px;
+        font-size: 12px; /* Adjust the font size as needed */
+        /* Add any other styling you want */
+    }
+</style>
+<!-- [ Main Content ] start -->
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between">
+                    <h5 class="mb-3 mb-sm-0">Transaction History list</h5>
+                    <div>
+                        <a href="@Url.Action("Deposit")" class="btn btn-primary">Deposit</a>
+                        <a href="@Url.Action("Withdrawal")" class="btn btn-primary">Withdrawals</a>
+                        <a href="@Url.Action("FundTransfer")" class="btn btn-primary">Fund Transfer</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-between ali mb-3 g-3">
+                    <div class="col-sm-auto">
+                        <form class="form-search">
+                            <i class="ph-duotone ph-magnifying-glass icon-search"></i>
+                            <input type="search" class="form-control" placeholder="Search..." />
+                            <button class="btn btn-light-secondary btn-search">Search</button>
+                        </form>
+                    </div>
+                    @* <div class="col-sm-auto">
+                        <a href="#" class="btn btn-primary">Add Account</a>
+                    </div> *@
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <td>Account No</td>
+                                <td>Transaction Type</td>
+                                <td>Transaction Date</td>
+                                <td>Amount</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var transaction in Model)
+                            {
+                                <tr>
+                                    <td>@transaction.AccountNo</td>
+                                    <td>@transaction.AccountType</td>
+                                    <td>@Convert.ToDateTime(transaction.Date).ToString("dd-MM-yyyy hh:mm:ss:tt")</td>
+                                    <td>@Convert.ToDecimal(transaction.Amount).ToString("N2")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ sample-page ] end -->
+
+</div>
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>

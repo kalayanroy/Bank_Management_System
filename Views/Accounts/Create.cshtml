@@ -1,0 +1,386 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link href="~/assets/css/sweetalert.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<!-- [ Main Content ] start -->
+<div class="row">
+    <form action="@Url.Action("Create")" method="post" id="createAccountForm" onsubmit="return validateForm()">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Create Account Information</h3>
+                </div>
+                <div class="card-body">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <div class="alert alert-danger">@error.ErrorMessage</div>
+                    }
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Account No</label>
+                                <input type="text" id="accountNo" name="accountNo" class="form-control" value="@ViewBag.AccountNo" placeholder="Enter Account No" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Customer</label>
+                                <div class="d-flex">
+                                    <select class="form-select me-2" id="customerId" name="customerId" onchange="customerInfo(this.value)">
+                                        <option value="0">Select Customer</option>
+                                        @foreach (var customer in ViewBag.CustomerList)
+                                        {
+                                            <option value="@customer.CustomerId">@customer.Username</option>
+                                        }
+                                    </select>
+                                    <!-- Add Button -->
+                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text" id="firstName" class="form-control" placeholder="Enter first name" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" id="lastName" class="form-control" placeholder="Enter last name" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="Enter email" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="number" id="phoneNumber" class="form-control" placeholder="Enter Mobile number" readonly />
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Account Type</label>
+                                <select id="acccountType" name="accountType" class="form-select">
+                                    <option value="Checking">Checking</option>
+                                    <option value="Savings">Savings</option>
+                                    <option value="Loan">Loan</option>
+                                </select>
+                            </div>
+                        </div>
+                       
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Opening Balance</label>
+                                <input type="number"  min="0" value="0" step="0.01" id="openingBalance" name="balance" class="form-control" placeholder="Enter Opening Balance" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Currency</label>
+                                <select class="form-select" id="currency" name="currency">
+                                    <option value="BDT">BDT</option>
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="INR">INR</option>
+                                    <option value="JPY">JPY</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-end">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</div>
+
+<!-- Add Customer Modal -->
+<div class="modal fade" id="addCustomerModal" tabindex="-1" aria-labelledby="addCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCustomerModalLabel">Add New Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addCustomerForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="newCustomerFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="newCustomerFirstName" name="firstName" placeholder="Enter first name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="newCustomerLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="newCustomerLastName" name="lastName" placeholder="Enter last name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="newCustomerUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="newCustomerUsername" name="phone" placeholder="Enter Username" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="newCustomerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="newCustomerEmail" name="email" placeholder="Enter email" required>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="newCustomerPassword" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="newCustomerPassword" name="password" placeholder="Enter Password" required>
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword" tabindex="-1">
+                                    <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="newCustomerConfirmPassword" class="form-label">Confirm Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="newCustomerConfirmPassword" name="confirmPassword" placeholder="Enter Confirm Password" required>
+                                <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword" tabindex="-1">
+                                    <i class="bi bi-eye-slash" id="toggleConfirmPasswordIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="newCustomerPhone" class="form-label">Phone</label>
+                            <input type="text" class="form-control" id="newCustomerPhone" name="phone" placeholder="Enter phone number" required>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Role</label>
+                                <select id="role" name="role" class="form-select">
+                                    <option value="User">User</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Manager">Manager</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="newCustomerAddress" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="newCustomerAddress" name="phone" placeholder="Enter Address" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="addCustomer()">Save Customer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    function customerInfo(value) {
+        var json = {
+            customerId: value
+        };
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetCustomerInfo")',
+            dataType: "json",
+            data: json,
+            success: function (data) {
+                if(data.success){
+                    document.getElementById("firstName").value = data.firstName;
+                    document.getElementById("lastName").value = data.lastName;
+                    document.getElementById("email").value = data.email;
+                    document.getElementById("phoneNumber").value = data.phone;
+                }
+                else{
+                    document.getElementById("firstName").value = '';
+                    document.getElementById("lastName").value = '';
+                    document.getElementById("email").value = '';
+                    document.getElementById("phoneNumber").value = '';
+                }
+                
+            },
+            error: function () {
+                console.log("Error fetching data.");
+            }
+        });
+
+        
+    }
+    function validateForm() {
+
+
+        var isValid = true;
+
+        // Check if all required fields are filled
+        if ($("#accountNO").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Account No is required!", "error");
+        }
+        else if ($("#customerId").val() === "0") {
+            isValid = false;
+            Swal.fire("Error", "Customer is required!", "error");
+        } else if ($("#openingBalance").val() < 0) {
+            isValid = false;
+            Swal.fire("Error", "Opening Balance must be greater than 0!", "error");
+        }
+        return isValid;
+    }
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordField = document.getElementById('newCustomerPassword');
+        const icon = document.getElementById('togglePasswordIcon');
+        togglePasswordVisibility(passwordField, icon);
+    });
+
+    document.getElementById('toggleConfirmPassword').addEventListener('click', function () {
+        const confirmPasswordField = document.getElementById('newCustomerConfirmPassword');
+        const icon = document.getElementById('toggleConfirmPasswordIcon');
+        togglePasswordVisibility(confirmPasswordField, icon);
+    });
+
+    function togglePasswordVisibility(field, icon) {
+        if (field.type === 'password') {
+            field.type = 'text';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        } else {
+            field.type = 'password';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        }
+    }
+
+    function validateAddCustomerForm() {
+        let isValid = true;
+        const firstName = document.getElementById("newCustomerFirstName").value.trim();
+        const lastName = document.getElementById("newCustomerLastName").value.trim();
+        const username = document.getElementById("newCustomerUsername").value.trim();
+        const email = document.getElementById("newCustomerEmail").value.trim();
+        const password = document.getElementById("newCustomerPassword").value.trim();
+        const confirmPassword = document.getElementById("newCustomerConfirmPassword").value.trim();
+        const phone = document.getElementById("newCustomerPhone").value.trim();
+        const address = document.getElementById("newCustomerAddress").value.trim();
+
+        // Reset all validation error messages
+        document.querySelectorAll('.error-message').forEach(e => e.remove());
+
+        // Validate first name
+        if (!firstName) {
+            displayError("newCustomerFirstName", "First name is required.");
+            isValid = false;
+        }
+
+        // Validate last name
+        if (!lastName) {
+            displayError("newCustomerLastName", "Last name is required.");
+            isValid = false;
+        }
+
+        // Validate username
+        if (!username) {
+            displayError("newCustomerPhone", "Username is required.");
+            isValid = false;
+        }
+
+        
+        // Validate password
+        if (!password) {
+            displayError("newCustomerPassword", "Password is required.");
+            isValid = false;
+        } else if (password.length < 6) {
+            displayError("newCustomerPassword", "Password must be at least 6 characters long.");
+            isValid = false;
+        }
+        // Validate email
+        if (!email) {
+            displayError("newCustomerEmail", "Email is required.");
+            isValid = false;
+        }
+
+        // Validate confirm password
+        if (confirmPassword !== password) {
+            displayError("newCustomerConfirmPassword", "Passwords do not match.");
+            isValid = false;
+        }
+
+        // Validate phone number
+        if (!phone) {
+            displayError("newCustomerPhone", "Phone number is required.");
+            isValid = false;
+        } else if (isNaN(phone) || phone.length < 11 ) {
+            displayError("newCustomerPhone", "Invalid phone number.");
+            isValid = false;
+        }
+
+        // Validate address
+        if (!address) {
+            displayError("newCustomerAddress", "Address is required.");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    function displayError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const errorElement = document.createElement("div");
+        errorElement.className = "error-message text-danger mt-1";
+        errorElement.textContent = message;
+        field.parentNode.appendChild(errorElement);
+    }
+    function addCustomer() {
+        if (validateAddCustomerForm()) {
+            // Get data from modal fields
+            var customer = {
+                firstName: $('#newCustomerFirstName').val(),
+                lastName: $('#newCustomerLastName').val(),
+                email: $('#newCustomerEmail').val(),
+                phone: $('#newCustomerPhone').val(),
+                username: $('#newCustomerUsername').val(),
+                password: $('#newCustomerPassword').val(),
+                address: $('#newCustomerAddress').val(),
+            };
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddCustomer")',
+                contentType: "application/json",
+                data: JSON.stringify(customer),
+                success: function (response) {
+                    if (response.success) {
+                        console.log(response);
+                        // Close the modal
+                        $('#addCustomerModal').modal('hide');
+
+                        // Add the new customer to the dropdown
+                        $('#customerId').append(new Option(response.username, response.customerId));
+
+                        // Optionally, select the new customer in the dropdown
+                        $('#customerId').val(response.customerId);
+
+                        Swal.fire("Success", "Customer added successfully!", "success");
+                    } else {
+                        Swal.fire("Error", "Failed to add customer. Please try again.", "error");
+                    }
+                },
+                error: function () {
+                    Swal.fire("Error", "An error occurred while adding the customer.", "error");
+                }
+            });
+        }
+        
+    }
+</script>

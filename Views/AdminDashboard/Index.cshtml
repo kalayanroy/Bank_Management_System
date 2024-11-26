@@ -1,0 +1,257 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Dashboard
+<!-- [ Main Content ] start -->
+<div class="row">
+    <div class="col-md-4 col-xxl-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="mb-0">Transactions</h5>
+                    
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach(var item in Model.transactionDashboard)
+                    {
+                        <li class="list-group-item px-0">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="avtar avtar-s border"> @item.Username.Substring(0,2) </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <div class="row g-1">
+                                        <div class="col-6">
+                                            <h6 class="mb-0">@item.Username.Trim()</h6>
+                                            <p class="text-muted mb-0"><small>@item.AccountNo</small></p>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <h6 class="mb-1">&#2547; @Convert.ToDecimal(item.Amount).ToString("N2")</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-xxl-9">
+        <div class="row">
+            <div class="col-md-6 col-xxl-3">
+                <div class="card statistics-card-1">
+                    <div class="card-body">
+                        <img src="https://html.phoenixcoded.net/light-able/bootstrap/assets/images/widget/img-status-2.svg" alt="img" class="img-fluid img-bg" />
+                        <div class="d-flex align-items-center">
+                            <div class="avtar bg-brand-color-1 text-white me-3">
+                                <i class="ph-duotone ph-currency-dollar f-26"></i>
+                            </div>
+                            <div>
+                                <p class="text-muted mb-0"><strong>Total Deposit</strong></p>
+                                <div class="d-flex align-items-end">
+                                    <h4 class="mb-0 f-w-500">&#2547; 
+                                        @if(@Model.totalAmountDashboard.Where(x => x.TransactionType == "Deposit").Count()>0)
+                                        {
+                                            @Model.totalAmountDashboard.Where(x => x.TransactionType == "Deposit").FirstOrDefault().TotalAmount;
+                                        }else
+                                        { <span>0.00</span> }
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xxl-3">
+                <div class="card statistics-card-1">
+                    <div class="card-body">
+                        <img src="https://html.phoenixcoded.net/light-able/bootstrap/assets/images/widget/img-status-2.svg" alt="img" class="img-fluid img-bg" />
+                        <div class="d-flex align-items-center">
+                            <div class="avtar bg-brand-color-1 text-white me-3">
+                                <i class="ph-duotone ph-currency-dollar f-26"></i>
+                            </div>
+                            <div>
+                                <p class="text-muted mb-0"><strong>Total Withdraw</strong></p>
+                                <div class="d-flex align-items-end">
+                                    <h4 class="mb-0 f-w-500">&#2547; 
+                                        @if (@Model.totalAmountDashboard.Where(x => x.TransactionType == "Withdrawal").Count() > 0)
+                                        {
+                                            @Model.totalAmountDashboard.Where(x => x.TransactionType == "Withdrawal").FirstOrDefault().TotalAmount
+                                            ;
+                                        }
+                                        else
+                                        {
+                                            <span>0.00</span>
+                                        }
+                                        
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xxl-3">
+                <div class="card statistics-card-1">
+                    <div class="card-body">
+                        <img src="https://html.phoenixcoded.net/light-able/bootstrap/assets/images/widget/img-status-2.svg" alt="img" class="img-fluid img-bg" />
+                        <div class="d-flex align-items-center">
+                            <div class="avtar bg-brand-color-1 text-white me-3">
+                                <i class="ph-duotone ph-currency-dollar f-26"></i>
+                            </div>
+                            <div>
+                                <p class="text-muted mb-0"><strong>Total Loan</strong></p>
+                                <div class="d-flex align-items-end">
+                                    <h4 class="mb-0 f-w-500">&#2547; 
+                                        @if (@Model.totalAmountDashboard.Where(x => x.TransactionType == "Loan").Count() > 0)
+                                        {
+                                            @Model.totalAmountDashboard.Where(x => x.TransactionType == "Loan").FirstOrDefault().TotalAmount
+                                            ;
+                                        }
+                                        else
+                                        {
+                                            <span>0.00</span>
+                                        }
+                                        </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xxl-3">
+                <div class="card statistics-card-1">
+                    <div class="card-body">
+                        <img src="https://html.phoenixcoded.net/light-able/bootstrap/assets/images/widget/img-status-2.svg" alt="img" class="img-fluid img-bg" />
+                        <div class="d-flex align-items-center">
+                            <div class="avtar bg-brand-color-1 text-white me-3">
+                                <i class="ph-duotone ph-currency-dollar f-26"></i>
+                            </div>
+                            <div>
+                                <p class="text-muted mb-0"><strong>Total Fund Transfer</strong></p>
+                                <div class="d-flex align-items-end">
+                                    <h4 class="mb-0 f-w-500">&#2547; 
+                                        @if (@Model.totalAmountDashboard.Where(x => x.TransactionType == "Fund Transfer").Count() > 0)
+                                        {
+                                            @Model.totalAmountDashboard.Where(x => x.TransactionType == "Fund Transfer").FirstOrDefault().TotalAmount
+                                            ;
+                                        }
+                                        else
+                                        {
+                                            <span>0.00</span>
+                                        }
+                                        </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div>
+                        <h5 class="mb-1">Type Wise History</h5>
+                    </div>
+                    <select class="form-select rounded-3 form-select-sm w-auto">
+                        <option>Today</option>
+                        <option>Weekly</option>
+                        <option selected>Monthly</option>
+                    </select>
+                </div>
+                <div id="cashflow-bar-chart"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card table-card">
+            <div class="card-header d-flex align-items-center justify-content-between py-3">
+                <h5 class="mb-0">Transaction History</h5>
+                <a href="@Url.Action("Index","Transaction")" class="btn btn-sm btn-link-primary">View All</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="pc-dt-simple">
+                        <thead>
+                            <tr>
+                                <th>Account No</th>
+                                <th>Username</th>
+                                <th>Type</th>
+                                <th>Date/Time</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model.transactionHistory)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            
+                                            <div class="flex-grow-1 ms-3">
+                                                <h6 class="mb-0">@item.AccountNo</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>@item.Username</td>
+                                    <td>@item.TransactionType</td>
+                                    <td>@Convert.ToDateTime(item.TransactionDate).ToString("dd-MM-yyyy") <span class="text-muted text-sm d-block">@Convert.ToDateTime(item.TransactionDate).ToString("hh:mm:ss tt")</span></td>
+                                    <td>&#2547; @Convert.ToDecimal(item.Amount).ToString("N2")</td>
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/plugins/apexcharts.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('/AdminDashboard/GetTransactionChartData') // Replace with your actual endpoint
+            .then(response => response.json())
+            .then(data => {
+                // Extract unique dates for categories
+                const categories = [...new Set(data.map(item => item.transactionDate.split('T')[0]))];
+
+                // Group data by transactionType and align amounts to the categories
+                const series = data.reduce((acc, curr) => {
+                    let seriesItem = acc.find(s => s.name === curr.transactionType);
+                    if (!seriesItem) {
+                        seriesItem = { name: curr.transactionType, data: Array(categories.length).fill(0) };
+                        acc.push(seriesItem);
+                    }
+                    const categoryIndex = categories.indexOf(curr.transactionDate.split('T')[0]);
+                    seriesItem.data[categoryIndex] = curr.amount;
+                    return acc;
+                }, []);
+
+                console.log('Categories:', categories);
+                console.log('Series:', series);
+
+                // ApexCharts options
+                const chartOptions = {
+                    chart: {
+                        type: 'bar',
+                        height: 350
+                    },
+                    series: series,
+                    xaxis: {
+                        categories: categories
+                    }
+                };
+
+                // Render the chart
+                const chart = new ApexCharts(document.querySelector('#cashflow-bar-chart'), chartOptions);
+                chart.render();
+            }).catch(error => console.error('Error fetching chart data:', error));
+    });
+</script>

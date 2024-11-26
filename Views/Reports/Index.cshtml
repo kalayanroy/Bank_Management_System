@@ -1,0 +1,128 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Monthly Statements";
+}
+<style>
+    .custom-swal-size {
+        width: 400px; /* Adjust the width as needed */
+        height: 150px;
+        font-size: 12px; /* Adjust the font size as needed */
+        /* Add any other styling you want */
+    }
+</style>
+<!-- [ Main Content ] start -->
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between">
+                    <h3 class="mb-3 mb-sm-0">Reporting and Statements</h3>
+                    
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-between ali mb-3 g-3">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="mb-0">
+                            <select class="form-select" id="accountNo">
+                                <option value="">Please Account No</option>
+                                <option value="0">All</option>
+                                @foreach (var account in ViewBag.AccountList)
+                                {
+                                    <option value="@account.AccountId">@account.AccountNo</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="mb-0">
+                            <input type="date" id="fromDate" class="form-control" value="@Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd")"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="mb-0">
+                            <input type="date" id="toDate" class="form-control" value="@Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd")" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="mb-0">
+                            <input type="button" class="btn btn-info" value="Search" onclick="searchInfo()" />
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Transaction Date</th>
+                                <th>Account No</th>
+                                <th>Transation Type</th>
+                                <th>Remarks</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ sample-page ] end -->
+
+</div>
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
+<script>
+    function searchInfo() {
+        var isValid = true;
+
+        // Check if all required fields are filled
+        if ($("#accountNo").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Account No is required!", "error");
+            return;
+        }
+
+        if (isValid) {
+            var json = {
+                accountId: document.getElementById("accountNo").value,
+                fromDate: document.getElementById("fromDate").value,
+                toDate: document.getElementById("toDate").value
+            };
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("FindValues")',
+                dataType: "json",
+                data: json,
+                success: function (data) {
+                    if(data.success){
+                        var tbody = $("#dataTbody");
+                        tbody.empty();
+                        data.model.forEach(function (item) {
+                            var row = `
+                                    <tr>                                        
+                                        <td>${item.transactionDate}</td>
+                                            <td>${item.accountNo}</td>
+                                            <td>${item.transactionType}</td>
+                                        <td>${item.remarks}</td>
+                                        <td>${item.amount}</td>
+                                    </tr>
+                                `;
+                            tbody.append(row);
+                        });
+                    }
+                    else {
+                        Swal.fire("No Data", "No transactions found for the selected criteria.", "info");
+                    }
+                },
+                error: function () {
+                    console.log("Error fetching data.");
+                }
+            });
+        }
+    }
+</script>

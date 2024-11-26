@@ -1,0 +1,225 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model BankMSWeb.Models.Account
+<link href="~/assets/css/sweetalert.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<!-- [ Main Content ] start -->
+<div class="row">
+    <form action="@Url.Action("ChangeUserInfo")" method="post" id="createAccountForm" onsubmit="return validateForm()">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Update Customer Information</h3>
+                </div>
+                <div class="card-body">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <div class="alert alert-danger">@error.ErrorMessage</div>
+                    }
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="mb-0">Basic Information Update</h3>
+                                </div>
+                                <div class="card-body">
+                                    <input type="text" value="@Model.Customer.CustomerId" id="customerId" name="customerId" hidden />
+                                    <input type="text" value="@Model.AccountId" id="accountId" name="accountId" hidden />
+                                    <input type="text" value="@Model.Customer.UserGuidId" id="userGuidId" name="userGuidId" hidden />
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account No</label>
+                                                <input type="text" id="accountNo" name="accountNo" class="form-control" value="@Model.AccountNo" placeholder="Enter Account No" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Customer</label>
+                                                <input type="text" id="customerId" name="customerId" class="form-control" value="@Model.CustomerName" placeholder="Enter Customer" readonly />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" id="firstName" class="form-control" placeholder="Enter first name" value="@Model.Customer.FirstName" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Last Name</label>
+                                                <input type="text" id="lastName" class="form-control" placeholder="Enter last name" value="@Model.Customer.LastName" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" id="email" class="form-control" placeholder="Enter email" value="@Model.Customer.Email" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Mobile Number</label>
+                                                <input type="number" id="phoneNumber" class="form-control" placeholder="Enter Mobile number" value="@Model.Customer.Phone" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account Type</label>
+                                                <select id="acccountType" name="accountType" class="form-select">
+                                                    @if (Model.AccountType == "Checking")
+                                                    {
+                                                        <option value="Checking" selected>Checking</option>
+                                                        <option value="Savings">Savings</option>
+                                                        <option value="Loan">Loan</option>
+                                                    }
+                                                    else if (Model.AccountType == "Savings")
+                                                    {
+                                                        <option value="Checking">Checking</option>
+                                                        <option value="Savings" selected>Savings</option>
+                                                        <option value="Loan">Loan</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="Checking">Checking</option>
+                                                        <option value="Savings">Savings</option>
+                                                        <option value="Loan" selected>Loan</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Opening Balance</label>
+                                                <input type="number" min="0" value="@Model.Balance" step="0.01" id="openingBalance" name="balance" class="form-control" placeholder="Enter Opening Balance" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 text-end">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="mb-0">Password Change</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Change Password</label>
+                                                <input type="password" id="changePassword" name="OldPassword" class="form-control" placeholder="Enter Change Password" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Confirm Password</label>
+                                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Enter Confirm Password" value="" />
+                                            </div>
+                                        </div><div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Current Password</label>
+                                                <input type="password" id="currentPassword" class="form-control" placeholder="Enter Current Password" value="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 text-end">
+                                            <button type="submit" class="btn btn-primary">Change Password</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    function validateAddCustomerForm() {
+        let isValid = true;
+        const firstName = document.getElementById("newCustomerFirstName").value.trim();
+        const lastName = document.getElementById("newCustomerLastName").value.trim();
+        const username = document.getElementById("newCustomerUsername").value.trim();
+        const email = document.getElementById("newCustomerEmail").value.trim();
+        const password = document.getElementById("newCustomerPassword").value.trim();
+        const confirmPassword = document.getElementById("newCustomerConfirmPassword").value.trim();
+        const phone = document.getElementById("newCustomerPhone").value.trim();
+        const address = document.getElementById("newCustomerAddress").value.trim();
+
+        // Reset all validation error messages
+        document.querySelectorAll('.error-message').forEach(e => e.remove());
+
+        // Validate first name
+        if (!firstName) {
+            displayError("newCustomerFirstName", "First name is required.");
+            isValid = false;
+        }
+
+        // Validate last name
+        if (!lastName) {
+            displayError("newCustomerLastName", "Last name is required.");
+            isValid = false;
+        }
+
+        // Validate username
+        if (!username) {
+            displayError("newCustomerPhone", "Username is required.");
+            isValid = false;
+        }
+
+
+        // Validate password
+        if (!password) {
+            displayError("newCustomerPassword", "Password is required.");
+            isValid = false;
+        } else if (password.length < 6) {
+            displayError("newCustomerPassword", "Password must be at least 6 characters long.");
+            isValid = false;
+        }
+        // Validate email
+        if (!email) {
+            displayError("newCustomerEmail", "Email is required.");
+            isValid = false;
+        }
+
+        // Validate confirm password
+        if (confirmPassword !== password) {
+            displayError("newCustomerConfirmPassword", "Passwords do not match.");
+            isValid = false;
+        }
+
+        // Validate phone number
+        if (!phone) {
+            displayError("newCustomerPhone", "Phone number is required.");
+            isValid = false;
+        } else if (isNaN(phone) || phone.length < 11) {
+            displayError("newCustomerPhone", "Invalid phone number.");
+            isValid = false;
+        }
+
+        // Validate address
+        if (!address) {
+            displayError("newCustomerAddress", "Address is required.");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+</script>

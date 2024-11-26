@@ -1,0 +1,525 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BankMSWeb.bundle.scp.css",
+      "PackagePath": "staticwebassets\\BankMSWeb.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\Rotativa\\wkhtmltopdf.exe",
+      "PackagePath": "staticwebassets\\Rotativa\\wkhtmltopdf.exe"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\css\\style-preset.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style-preset.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\css\\sweetalert.css",
+      "PackagePath": "staticwebassets\\assets\\css\\sweetalert.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\feather.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\feather\\feathere8ab.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather\\feathere8ab.eot"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\feather\\feathere8ab.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather\\feathere8ab.svg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\feather\\feathere8ab.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather\\feathere8ab.ttf"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\feather\\feathere8ab.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\feather\\feathere8ab.woff"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-brands-400.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-brands-400.eot"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-brands-400.html",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-brands-400.html"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-brands-400.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-brands-400.svg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-brands-400.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-brands-400.woff"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-brands-400d41d.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-brands-400d41d.eot"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-regular-400.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-regular-400.eot"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-regular-400.html",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-regular-400.html"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-regular-400.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-regular-400.svg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-regular-400.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-regular-400.woff"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-regular-400d41d.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-regular-400d41d.eot"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-solid-900.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-solid-900.eot"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-solid-900.html",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-solid-900.html"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-solid-900.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-solid-900.svg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-solid-900.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-solid-900.woff"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\fontawesome\\fa-solid-900d41d.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome\\fa-solid-900d41d.eot"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\material.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\material.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\material\\material.html",
+      "PackagePath": "staticwebassets\\assets\\fonts\\material\\material.html"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\phosphor\\duotone\\Phosphor-Duotone.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\phosphor\\duotone\\Phosphor-Duotone.svg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\phosphor\\duotone\\Phosphor-Duotone.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\phosphor\\duotone\\Phosphor-Duotone.ttf"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\phosphor\\duotone\\Phosphor-Duotone.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\phosphor\\duotone\\Phosphor-Duotone.woff"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\phosphor\\duotone\\style.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\phosphor\\duotone\\style.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\tabler-icons.min.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\tabler-icons.min.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\tabler\\tabler-icons.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\tabler\\tabler-icons.eot"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\tabler\\tabler-icons.html",
+      "PackagePath": "staticwebassets\\assets\\fonts\\tabler\\tabler-icons.html"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\tabler\\tabler-icons.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\tabler\\tabler-icons.svg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\tabler\\tabler-icons.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\tabler\\tabler-icons.ttf"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\tabler\\tabler-icons.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\tabler\\tabler-icons.woff"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\fonts\\tabler\\tabler-iconsd41d.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\tabler\\tabler-iconsd41d.eot"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\images\\authentication\\img-auth-bg.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\authentication\\img-auth-bg.jpg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\images\\logo-dark.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\logo-dark.svg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\images\\user\\avatar-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-1.jpg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\images\\user\\avatar-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-2.jpg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\images\\user\\avatar-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\user\\avatar-3.jpg"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\js\\fonts\\custom-font.js",
+      "PackagePath": "staticwebassets\\assets\\js\\fonts\\custom-font.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\js\\jquery-3.6.1.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-3.6.1.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\js\\pcoded.js",
+      "PackagePath": "staticwebassets\\assets\\js\\pcoded.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\js\\plugins\\apexcharts.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\plugins\\apexcharts.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\js\\plugins\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\plugins\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\js\\plugins\\feather.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\plugins\\feather.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\js\\plugins\\popper.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\plugins\\popper.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\js\\plugins\\simplebar.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\plugins\\simplebar.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\assets\\js\\sweetalert2.js",
+      "PackagePath": "staticwebassets\\assets\\js\\sweetalert2.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\bin\\wkhtmltoimage.exe",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\bin\\wkhtmltoimage.exe"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\bin\\wkhtmltopdf.exe",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\bin\\wkhtmltox.dll",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\bin\\wkhtmltox.dll"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\include\\wkhtmltox\\dllbegin.inc",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\include\\wkhtmltox\\dllbegin.inc"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\include\\wkhtmltox\\dllend.inc",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\include\\wkhtmltox\\dllend.inc"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\include\\wkhtmltox\\image.h",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\include\\wkhtmltox\\image.h"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\include\\wkhtmltox\\pdf.h",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\include\\wkhtmltox\\pdf.h"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\lib\\wkhtmltox.lib",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\lib\\wkhtmltox.lib"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\uninstall.exe",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\uninstall.exe"
+    },
+    {
+      "Id": "D:\\OOP\\BankMSWeb\\BankMSWeb\\wwwroot\\wkhtmltopdf\\wkhtmltopdf.exe",
+      "PackagePath": "staticwebassets\\wkhtmltopdf\\wkhtmltopdf.exe"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BankMSWeb.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BankMSWeb.props",
+      "PackagePath": "build\\BankMSWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BankMSWeb.props",
+      "PackagePath": "buildMultiTargeting\\BankMSWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BankMSWeb.props",
+      "PackagePath": "buildTransitive\\BankMSWeb.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

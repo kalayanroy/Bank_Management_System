@@ -1,0 +1,274 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link href="~/assets/css/sweetalert.css" rel="stylesheet" />
+<!-- [ Main Content ] start -->
+<div class="row">
+    <form action="@Url.Action("Create")" method="post" onsubmit="return validateForm()">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Saving Plan</h3>
+                </div>
+                <div class="card-body">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        if (error.ErrorMessage == "Saving Plan Save Successfully")
+                        {
+                            <div class="alert alert-success">@error.ErrorMessage</div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger">@error.ErrorMessage</div>
+                        }
+
+                    }
+                    <input type="text" value="" id="accountId" name="accountId" hidden />
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account No</label>
+                                                <input type="text" id="accountNo" name="accountNo" class="form-control" value="" placeholder="Enter Account No" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Customer</label>
+                                                <select class="form-select me-2" id="customerId" name="customerId" disabled>
+                                                    <option value="0">Select Customer</option>
+                                                    @foreach (var customer in ViewBag.CustomerList)
+                                                    {
+                                                        <option value="@customer.CustomerId">@customer.Username</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" id="firstName" class="form-control" placeholder="Enter first name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Last Name</label>
+                                                <input type="text" id="lastName" class="form-control" placeholder="Enter last name" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" id="email" class="form-control" placeholder="Enter email" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Mobile Number</label>
+                                                <input type="number" id="phoneNumber" class="form-control" placeholder="Enter Mobile number" readonly />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Account Type</label>
+                                                <input type="text" id="TransactionType" name="transactionType" class="form-control" placeholder="Enter AccountType" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Current Balance</label>
+                                                <input type="number" min="0" value="0" step="0.01" id="currentBalance" name="balance" class="form-control" placeholder="Enter Current Balance" disabled />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Plan Type</label>
+                                                <select class="form-select me-2" id="planType" name="planType">
+                                                    <option value="0">Select Type</option>
+                                                    <option value="Fixed Deposit">Fixed Deposit</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Duration(Months)</label>
+                                                <input type="number" min="0" value="0" step="0.01" id="DurationMonths" name="DurationMonths" class="form-control" placeholder="Enter Duration(Months)" onchange="durationMonthsChange()" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Amount</label>
+                                                <input type="number" min="0" value="0" step="0.01" id="PrincipalAmount" name="PrincipalAmount" class="form-control" placeholder="Enter Amount" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Interest Rate (%)</label>
+                                                <input type="number" min="0" value="0" step="0.01" id="interestRate" name="interestRate" class="form-control" placeholder="Enter Interest Rate" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Start Date</label>
+                                                <input type="date" id="StartDate" name="StartDate" class="form-control" placeholder="Enter Start Date" value=""/>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Maturity Date</label>
+                                                <input type="date" id="MaturityDate" name="MaturityDate" class="form-control" disabled/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Maturity Amount</label>
+                                                <input type="number" min="0" value="0" step="0.01" id="MaturityAmount" name="MaturityAmount" class="form-control" placeholder="Enter Maturity Amount" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-end">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    document.getElementById("accountNo").addEventListener("blur", accountInfo);
+    document.getElementById("DurationMonths").addEventListener("blur", durationMonthsChange);
+    document.getElementById("PrincipalAmount").addEventListener("blur", durationMonthsChange);
+    document.getElementById("interestRate").addEventListener("blur", durationMonthsChange);
+    document.getElementById("StartDate").addEventListener("blur", maturityDateChange);
+    function accountInfo() {
+        var json = {
+            accountNo: document.getElementById("accountNo").value
+        };
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetAccountInfo", "Accounts")',
+            dataType: "json",
+            data: json,
+            success: function (data) {
+                if (data.success) {
+                    document.getElementById("accountId").value = data.accountId;
+                    document.getElementById("customerId").value = data.customerId;
+                    document.getElementById("firstName").value = data.firstName;
+                    document.getElementById("lastName").value = data.lastName;
+                    document.getElementById("email").value = data.email;
+                    document.getElementById("phoneNumber").value = data.phone;
+                    document.getElementById("TransactionType").value = data.accountType;
+                    document.getElementById("currentBalance").value = data.currentBalance;
+                }
+                else {
+                    document.getElementById("accountId").value = '';
+                    document.getElementById("customerId").value = '0';
+                    document.getElementById("firstName").value = '';
+                    document.getElementById("lastName").value = '';
+                    document.getElementById("email").value = '';
+                    document.getElementById("phoneNumber").value = '';
+                    document.getElementById("TransactionType").value = '';
+                    document.getElementById("currentBalance").value = '';
+                }
+
+            },
+            error: function () {
+                console.log("Error fetching data.");
+            }
+        });
+    }
+
+    function validateForm() {
+
+
+        var isValid = true;
+
+        // Check if all required fields are filled
+        if ($("#accountNo").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Account No is required!", "error");
+        }
+        else if ($("#planType").val() === "0") {
+            isValid = false;
+            Swal.fire("Error", "Plan Type is required!", "error");
+        }
+        else if ($("#customerId").val() === "0") {
+            isValid = false;
+            Swal.fire("Error", "Customer is required!", "error");
+        } else if ($("#PrincipalAmount").val() < 0) {
+            isValid = false;
+            Swal.fire("Error", "Saving Amount be greater than 0!", "error");
+        } else if ($("#DurationMonths").val() < 1) {
+            isValid = false;
+            Swal.fire("Error", "Duration(Months) be greater than 1!", "error");
+        }
+        return isValid;
+    }
+
+    function durationMonthsChange(){
+        var durationM=document.getElementById("DurationMonths").value;
+
+        //MaturityAmount
+        //PrincipalAmount
+        //interestRate
+        var durationM = document.getElementById("DurationMonths").value;
+        var principalA = document.getElementById("PrincipalAmount").value;
+        var interestR = document.getElementById("interestRate").value;
+
+        const maturityAmount = parseFloat(principalA)+parseFloat(principalA) * ((1 + parseFloat(interestR) / 100) / parseFloat(durationM) / 12);
+
+        document.getElementById("MaturityAmount").value = parseFloat(maturityAmount).toFixed(2);
+
+    }
+    function maturityDateChange(){
+        // Get the Start Date and Duration in Months
+        var sDate = document.getElementById("StartDate").value;
+        var durationM = parseInt(document.getElementById("DurationMonths").value);
+
+        // Convert Start Date to a JavaScript Date object
+        var startDate = new Date(sDate);
+
+        // Add the duration (in months) to the Start Date
+        startDate.setMonth(startDate.getMonth() + durationM);
+
+        // Format the new date to YYYY-MM-DD for setting into the input field
+        var year = startDate.getFullYear();
+        var month = (startDate.getMonth() + 1).toString().padStart(2, '0'); // Ensure 2-digit month
+        var day = startDate.getDate().toString().padStart(2, '0'); // Ensure 2-digit day
+
+        var maturityDate = `${year}-${month}-${day}`;
+
+        // Set the calculated Maturity Date into the respective input field
+        document.getElementById("MaturityDate").value = maturityDate;
+    }
+</script>

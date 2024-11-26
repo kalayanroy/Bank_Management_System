@@ -1,0 +1,259 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Details Statements";
+}
+<style>
+    .custom-swal-size {
+        width: 400px; /* Adjust the width as needed */
+        height: 150px;
+        font-size: 12px; /* Adjust the font size as needed */
+        /* Add any other styling you want */
+    }
+</style>
+<!-- [ Main Content ] start -->
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between">
+                    <h3 class="mb-3 mb-sm-0">Reporting and Statements</h3>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-between ali mb-3 g-3">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="mb-0">
+                            <select class="form-select" id="accountNo">
+                                <option value="">Please Account No</option>
+                                @foreach (var account in ViewBag.AccountList)
+                                {
+                                    <option value="@account.AccountId">@account.AccountNo</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="mb-0">
+                            <input type="date" id="fromDate" class="form-control" value="@Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd")" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="mb-0">
+                            <input type="date" id="toDate" class="form-control" value="@Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd")" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-1">
+                        <div class="mb-0">
+                            <input type="button" class="btn btn-info" value="Search" onclick="searchInfo()" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-1">
+                        <div class="mb-0">
+                            <input type="button" class="btn btn-info" value="PDF" onclick="exportPDF()" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-1">
+                        <div class="mb-0">
+                            <input type="button" class="btn btn-info" value="Excel" onclick="exportExcel()" />
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Account No</th>
+                                <th>Account Type</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataAccountSummaryTbody">
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <td colspan="8" style="text-align:center"><strong>Loan History</strong></td>
+                            </tr>
+                            <tr>
+                                <th>Loan</th>
+                                <th>Account No</th>
+                                <th>Loan Type</th>                                
+                                <th>Interest Rate</th>
+                                <th>Term</th>
+                                <th>Approved Date</th>
+                                <th>Loan Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataAccountLoanTbody">
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <td colspan="4" style="text-align:center"><strong>Transaction History</strong></td>
+                            </tr>
+                            <tr>
+                                <th>Transaction Date</th>
+                                <th>Transaction Type</th>
+                                <th>Remarks</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataAccountHistoryTbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ sample-page ] end -->
+
+</div>
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
+<script>
+    function exportPDF(){
+        var isValid = true;
+
+        // Check if all required fields are filled
+        if ($("#accountNo").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Account No is required!", "error");
+            return;
+        }
+        var accountId = document.getElementById("accountNo").value;
+        var fromDate = document.getElementById("fromDate").value;
+        var toDate = document.getElementById("toDate").value;
+
+        // Get the current protocol and host dynamically
+        var protocol = window.location.protocol; 
+        var host = window.location.host; 
+        var controller = "/Reports/ExportToPDF"; 
+
+        var baseUrl = `${protocol}//${host}${controller}`;
+
+        var url = `${baseUrl}?accountId=${accountId}&fromDate=${fromDate}&toDate=${toDate}`;
+
+        //window.location.href = url;
+        window.open(url, '_blank');
+    }
+    function exportExcel() {
+        var isValid = true;
+
+        // Check if all required fields are filled
+        if ($("#accountNo").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Account No is required!", "error");
+            return;
+        }
+
+        var accountId = document.getElementById("accountNo").value;
+        var fromDate = document.getElementById("fromDate").value;
+        var toDate = document.getElementById("toDate").value;
+
+        // Get the current protocol and host dynamically
+        var protocol = window.location.protocol; 
+        var host = window.location.host; 
+        var controller = "/Reports/ExportToExcel";
+
+        var baseUrl = `${protocol}//${host}${controller}`;
+
+        var url = `${baseUrl}?accountId=${accountId}&fromDate=${fromDate}&toDate=${toDate}`;
+
+        //window.location.href = url;
+        window.open(url, '_blank');
+    }
+    function searchInfo() {
+        var isValid = true;
+
+        // Check if all required fields are filled
+        if ($("#accountNo").val() === "") {
+            isValid = false;
+            Swal.fire("Error", "Account No is required!", "error");
+            return;
+        }
+
+        if (isValid) {
+            var json = {
+                accountId: document.getElementById("accountNo").value,
+                fromDate: document.getElementById("fromDate").value,
+                toDate: document.getElementById("toDate").value
+            };
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("FindDetailsValues")',
+                dataType: "json",
+                data: json,
+                success: function (data) {
+                    //console.log(data);
+                    if (data.success) {
+                        var tbody = $("#dataAccountSummaryTbody");
+                        tbody.empty();
+
+                        var loantbody = $("#dataAccountLoanTbody");
+                        loantbody.empty();
+                        var historytbody = $("#dataAccountHistoryTbody");
+                        historytbody.empty();
+
+                        var row = `
+                                            <tr>
+                                                        <td>${data.model.accountSummary.customerName}</td>
+                                                        <td>${data.model.accountSummary.accountNo}</td>
+                                                            <td>${data.model.accountSummary.accountType}</td>
+                                                        <td>${data.model.accountSummary.openingBalance}</td>
+                                            </tr>
+                                        `;
+                        tbody.append(row);
+
+                        data.model.loanList.forEach(function (item) {
+                            var row1 = `
+                                                <tr>
+                                                                <td>${item.loanId}</td>
+                                                                    <td>${data.model.accountSummary.accountNo}</td>
+                                                                        <td>${item.loanType}</td>
+                                                                            <td>${item.interestRate}</td>
+                                                                                <td>${item.term}</td>
+                                                                                    <td>${item.startDate}</td>
+                                                                                        <td>${item.loanAmount}</td>
+                                                                    <td>${item.loanStatus}</td>
+                                                </tr>
+                                            `;
+                            loantbody.append(row1);
+                        });
+
+                        data.model.transactionDetailsVws.forEach(function (item) {
+                            var row2 = `
+                                                    <tr>
+                                                                        <td>${item.transactionDate}</td>
+                                                                                <td>${item.transactionType}</td>
+                                                                                            <td>${item.remarks}</td>
+                                                                                            <td>${item.amount}</td>
+                                                    </tr>
+                                                `;
+                            historytbody.append(row2);
+                        });
+                    }
+                    else {
+                        Swal.fire("No Data", "No transactions found for the selected criteria.", "info");
+                    }
+                },
+                error: function () {
+                    console.log("Error fetching data.");
+                }
+            });
+        }
+    }
+</script>

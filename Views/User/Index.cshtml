@@ -1,0 +1,93 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "Accounts";
+}
+@model IEnumerable<Account>
+<style>
+    .custom-swal-size {
+        width: 400px; /* Adjust the width as needed */
+        height: 150px;
+        font-size: 12px; /* Adjust the font size as needed */
+        /* Add any other styling you want */
+    }
+</style>
+<!-- [ Main Content ] start -->
+<div class="row">
+    <!-- [ sample-page ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-between ali mb-3 g-3">
+                    <div class="col-sm-auto">
+                        <form class="form-search">
+                            <i class="ph-duotone ph-magnifying-glass icon-search"></i>
+                            <input type="search" class="form-control" placeholder="Search..." />
+                            <button class="btn btn-light-secondary btn-search">Search</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-auto">
+                        <a href="@Url.Action("Create","Accounts")" class="btn btn-primary">Add Account</a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Account No</th>
+                                <th>Customer Name</th>
+                                <th>Account Type</th>
+                                <th>First name</th>
+                                <th>Last name</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Role</th>
+                                <th>Balance</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int sl = 1;
+                            }
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">@sl</td>
+                                    <td>@item.AccountNo</td>
+                                    <td>@item.CustomerName</td>
+                                    <td>@item.AccountType</td>
+                                    <td>@item.Customer.FirstName</td>
+                                    <td>@item.Customer.LastName</td>
+                                    <td>@item.Customer.Address</td>
+                                    <td>@item.Customer.Phone</td>
+                                    <td>@item.Customer.Role</td>
+                                    <td>@item.Balance</td>
+                                    <td>
+
+                                        <a href="@Url.Action("ChangeUserInfo",new{accountId=item.AccountId})" class="avtar avtar-xs btn-link-secondary">
+                                            <i class="ti ti-edit f-20"></i>
+                                        </a>
+                                        <a href="#" class="avtar avtar-xs btn-link-secondary" onclick="isDelete('@item.AccountId')">
+                                            <i class="ti ti-trash f-20"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                sl++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ sample-page ] end -->
+
+</div>
+<script src="~/assets/js/jquery-3.6.1.min.js"></script>
+<script src="~/assets/js/sweetalert2.js"></script>
